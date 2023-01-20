@@ -24,7 +24,7 @@ const Countries = () => {
   return (
     <>
       {countries ? (
-        <div>{allCountries}</div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">{allCountries}</div>
       ) : (
         <h1 className="text-gray-800 font-bold uppercase tracking-wide flex items-center justify-center text-center h-screen text-4xl dark:text-white">
           Loading...
