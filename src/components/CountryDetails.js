@@ -14,13 +14,24 @@ const CountryDetails = () => {
         const data = await response.json();
         setCountryData(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     getCountry();
   }, [name]);
 
-  return <div className="text-white">{name}</div>;
+  const country = countryData.map((item) => (
+    <div
+      key={item.flags.svg}
+      className="grid grid-cols-1 gap-8 md:grid-cols-2 md:place-items-center md:h-screen"
+    >
+      <img src={item.flags.svg} alt={item.name.common} />
+      <div>
+        <h1>{item.name.official}</h1>
+      </div>
+    </div>
+  ));
+  return <div className="p-8 md:py-0 max-w-7xl mx-auto">{country}</div>;
 };
 
 export default CountryDetails;

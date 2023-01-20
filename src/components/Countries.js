@@ -11,7 +11,7 @@ const Countries = () => {
         const data = await response.json();
         setCountries(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     getCountries();
