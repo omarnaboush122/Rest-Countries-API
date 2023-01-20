@@ -16,8 +16,12 @@ const Countries = () => {
     };
     getCountries();
   }, []);
-  
-  return <>Countries</>;
+
+  return <>{countries ? <div>
+
+  </div> :
+  <h1 className="text-gray-800 font-bold uppercase tracking-wide flex items-center justify-center text-center h-screen text-4xl dark:text-white">Loading...</h1>
+   }</>;
 };
 
 export default Countries;
