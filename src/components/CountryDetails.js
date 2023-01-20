@@ -27,7 +27,13 @@ const CountryDetails = () => {
     >
       <img src={item.flags.svg} alt={item.name.common} />
       <div>
-        <h1>{item.name.official}</h1>
+        <h1 className="font-bold text-gray-900 text-4xl lg:text-6xl">{item.name.official}</h1>
+        <ul>
+        <li>Capital: {item.capital[0]}</li>
+        <li>Population: {item.population.toLocaleString()}</li>
+        <li>Region: {item.region}</li>
+        <li>Subregion: {item.subregion}</li>
+      </ul>
       </div>
     </div>
   ));
