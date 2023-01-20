@@ -23,8 +23,22 @@ const Countries = () => {
 
   return (
     <>
-      {countries ? (
-        <div className="container mx-auto p-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+  <div className="container mx-auto p-8">
+  <div className="flex flex-col gap-4 mb-8 md:flex-row md:items-center md:justify-between">
+      <form autoComplete="off" className="max-w-3xl md:flex-1">
+      <input className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full rounded shadow outline-none" type="text" name="search" placeholder="Search for a country by its name" required />
+      </form>
+      <form>
+        <select name="filter-by-region" className="w-52">
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </form>
+    </div>
+    {countries ? (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {allCountries}
         </div>
       ) : (
@@ -32,6 +46,7 @@ const Countries = () => {
           Loading...
         </h1>
       )}
+  </div>
     </>
   );
 };
