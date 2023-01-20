@@ -36,12 +36,28 @@ const CountryDetails = () => {
           <li>Region: {item.region}</li>
           <li>Subregion: {item.subregion}</li>
         </ul>
-        {item.borders && <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">Borders:</h3>}
+        {item.borders && (
+          <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">
+            Borders:
+          </h3>
+        )}
         <ul className="flex flex-wrap gap-2">
           {item.borders &&
-            item.borders.map((border, index) => <li key={index} className="bg-white text-gray-700 p-2 rounded text-xs tracking-wide shadow dark:bg-gray-800 dark:text-gray-400">{border}</li>)}
+            item.borders.map((border, index) => (
+              <li
+                key={index}
+                className="bg-white text-gray-700 p-2 rounded text-xs tracking-wide shadow dark:bg-gray-800 dark:text-gray-400"
+              >
+                {border}
+              </li>
+            ))}
         </ul>
-        <Link to="/" className="inline-block mt-8 bg-white text-gray-700 py-2 px-6 rounded shadow hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">&larr; Back</Link>
+        <Link
+          to="/"
+          className="inline-block mt-8 bg-white text-gray-700 py-2 px-6 rounded shadow hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
+        >
+          &larr; Back
+        </Link>
       </div>
     </div>
   ));

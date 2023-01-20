@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Country = ({ flags, name, population, region, subregion }) => {
   return (
-    <Link to={`/${name.common}`}>
+    <Link to={`/countries/${name.common}`}>
       <div className="bg-white hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-200 rounded-lg shadow overflow-hidden">
         <img
           className="w-full object-cover  md:h-72"
