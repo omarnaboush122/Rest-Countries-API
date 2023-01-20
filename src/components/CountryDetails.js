@@ -27,19 +27,19 @@ const CountryDetails = () => {
     >
       <img src={item.flags.svg} alt={item.name.common} />
       <div>
-        <h1 className="font-bold text-gray-900 text-4xl lg:text-6xl">
+        <h1 className="mb-8 font-bold text-gray-900 text-4xl lg:text-6xl dark:text-white">
           {item.name.official}
         </h1>
-        <ul>
+        <ul className="flex flex-col mt-4 gap-2 text-slate-700 dark:text-gray-400">
           <li>Capital: {item.capital[0]}</li>
           <li>Population: {item.population.toLocaleString()}</li>
           <li>Region: {item.region}</li>
           <li>Subregion: {item.subregion}</li>
         </ul>
-        {item.borders && <h3>Borders:</h3>}
-        <ul>
+        {item.borders && <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">Borders:</h3>}
+        <ul className="flex flex-wrap gap-2">
           {item.borders &&
-            item.borders.map((border, index) => <li key={index}>{border}</li>)}
+            item.borders.map((border, index) => <li key={index} className="bg-white text-gray-700 p-2 rounded text-xs tracking-wide shadow dark:bg-gray-800 dark:text-gray-400">{border}</li>)}
         </ul>
       </div>
     </div>
