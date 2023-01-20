@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CountryDetails = () => {
   const [countryData, setCountryData] = useState([]);
@@ -41,6 +41,7 @@ const CountryDetails = () => {
           {item.borders &&
             item.borders.map((border, index) => <li key={index} className="bg-white text-gray-700 p-2 rounded text-xs tracking-wide shadow dark:bg-gray-800 dark:text-gray-400">{border}</li>)}
         </ul>
+        <Link to="/" className="inline-block mt-8 bg-white text-gray-700 py-2 px-6 rounded shadow hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">&larr; Back</Link>
       </div>
     </div>
   ));
