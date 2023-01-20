@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Country from "./Country";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
@@ -17,11 +17,21 @@ const Countries = () => {
     getCountries();
   }, []);
 
-  return <>{countries ? <div>
+  const allCountries = countries.map((country) => (
+    <Country key={country.name.common} {...country} />
+  ));
 
-  </div> :
-  <h1 className="text-gray-800 font-bold uppercase tracking-wide flex items-center justify-center text-center h-screen text-4xl dark:text-white">Loading...</h1>
-   }</>;
+  return (
+    <>
+      {countries ? (
+        <div>{allCountries}</div>
+      ) : (
+        <h1 className="text-gray-800 font-bold uppercase tracking-wide flex items-center justify-center text-center h-screen text-4xl dark:text-white">
+          Loading...
+        </h1>
+      )}
+    </>
+  );
 };
 
 export default Countries;
