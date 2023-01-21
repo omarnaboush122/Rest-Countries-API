@@ -3,48 +3,61 @@ import Country from "./Country";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-  const [input, setInput] = useState({
-    search: "",
-    filterbyregion: "",
-  });
+  const [searchText, setSearchText] = useState("");
+  const regions = [
+    {
+      name: "Europe",
+    },
+    {
+      name: "Asia",
+    },
+    {
+      name: "Africa",
+    },
+    {
+      name: "Oceania",
+    },
+    {
+      name: "Americas",
+    },
+    {
+      name: "Antarctic",
+    },
+  ];
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setInput((prevInput) => ({
-      ...prevInput,
-      [name]: value,
-    }));
-  };
-
-   const searchCountry = async () => {
+  const searchCountry = async () => {
     try {
-      const response = await fetch(`https://restcountries.com/v3.1/name/${input.search}`)
+      const response = await fetch(
+        `https://restcountries.com/v3.1/name/${searchText}`
+      );
       const data = await response.json();
       setCountries(data);
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     searchCountry();
-  }
+  };
 
-  const filterCountry = async () => {
+  const filterCountryByRegion = async (region) => {
     try {
-      const response = await fetch(`https://restcountries.com/v3.1/region/${input.filterbyregion}`)
+      const response = await fetch(
+        `https://restcountries.com/v3.1/region/${region}`
+      );
       const data = await response.json();
-      setCountries(data)
-    } catch(error) {
+      setCountries(data);
+    } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  const handleFilter = (e) => {
+  const handleFilterSubmit = (e) => {
     e.preventDefault();
-    filterCountry();
-  }
+    filterCountryByRegion();
+  };
 
   useEffect(() => {
     const getCountries = async () => {
@@ -59,8 +72,6 @@ const Countries = () => {
     getCountries();
   }, []);
 
-  
-
   const allCountries = countries.map((country) => (
     <Country key={country.name.common} {...country} />
   ));
@@ -69,31 +80,31 @@ const Countries = () => {
     <>
       <div className="container mx-auto p-8">
         <div className="flex flex-col gap-4 mb-8 md:flex-row md:items-center md:justify-between">
-          <form autoComplete="off" className="max-w-3xl md:flex-1" onSubmit={handleSearch}>
+          <form
+            autoComplete="off"
+            className="max-w-3xl md:flex-1"
+            onSubmit={handleSearch}
+          >
             <input
               className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full rounded shadow outline-none dark:text-gray-400 dark:placeholder:text-gray-400 dark:bg-gray-800 dark:focus:bg-gray-700 transition-all duration-200"
               type="text"
               name="search"
               placeholder="Search for a country by its name"
               required
-              onChange={handleChange}
-              value={input.search}
+              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText}
             />
           </form>
-          <form onSubmit={handleFilter}>
+          <form onSubmit={handleFilterSubmit}>
             <select
               name="filterbyregion"
               className="w-52 py-3 px-4 outline-none shadow rounded text-gray-600 dark:text-gray-400 dark:bg-gray-800 dark:focus:bg-gray-700"
-              onChange={handleChange}
-              value={input.filterbyregion}
+              onChange={(e) => filterCountryByRegion(e.target.value)}
+              value={regions.name}
             >
-              <option value="All">All</option>
-              <option value="Europe">Europe</option>
-              <option value="Asia">Asia</option>
-              <option value="Afria">Africa</option>
-              <option value="Oceania">Oceania</option>
-              <option value="Americas">Americas</option>
-              <option value="Antarctic">Antarctic</option>
+              {regions.map((region,index) => (
+                <option key={index} value={region}>{region}</option>
+              ))}
             </select>
           </form>
         </div>
