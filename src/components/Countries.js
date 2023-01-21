@@ -26,14 +26,18 @@ const Countries = () => {
   <div className="container mx-auto p-8">
   <div className="flex flex-col gap-4 mb-8 md:flex-row md:items-center md:justify-between">
       <form autoComplete="off" className="max-w-3xl md:flex-1">
-      <input className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full rounded shadow outline-none" type="text" name="search" placeholder="Search for a country by its name" required />
+      <input className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full rounded shadow outline-none dark:text-gray-400 dark:placeholder:text-gray-400 dark:bg-gray-800 dark:focus:bg-gray-700 transition-all duration-200" type="text" name="search" placeholder="Search for a country by its name" required />
       </form>
       <form>
-        <select name="filter-by-region" className="w-52">
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
+        <select name="filter-by-region" className="w-52 py-3 px-4 outline-none shadow rounded text-gray-600 dark:text-gray-400 dark:bg-gray-800 focus:bg-gray-700">
+          <option value="All">All</option>
+          <option value="Europe">Europe</option>
+          <option value="Asia">Asia</option>
+          <option value="Afria">Africa</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Americas">Americas</option>
+          <option value="Antarctic">Antarctic</option>
+
         </select>
       </form>
     </div>
