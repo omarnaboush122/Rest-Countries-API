@@ -102,8 +102,10 @@ const Countries = () => {
               onChange={(e) => filterCountryByRegion(e.target.value)}
               value={regions.name}
             >
-              {regions.map((region,index) => (
-                <option key={index} value={region.name}>{region.name}</option>
+              {regions.map((region, index) => (
+                <option key={index} value={region.name}>
+                  {region.name}
+                </option>
               ))}
             </select>
           </form>

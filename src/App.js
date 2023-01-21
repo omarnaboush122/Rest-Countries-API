@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Countries />} />
           <Route path="/countries/:name" element={<CountryDetails />} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
