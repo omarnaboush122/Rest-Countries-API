@@ -20,6 +20,10 @@ const CountryDetails = () => {
     getCountry();
   }, [name]);
 
+  useEffect(() => {
+    document.title = `Countries | ${name}`
+  },[name])
+
   const country = countryData.map((item) => (
     <div
       key={item.flags.svg}
