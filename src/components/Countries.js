@@ -103,7 +103,7 @@ const Countries = () => {
               value={regions.name}
             >
               {regions.map((region,index) => (
-                <option key={index} value={region}>{region}</option>
+                <option key={index} value={region.name}>{region.name}</option>
               ))}
             </select>
           </form>
